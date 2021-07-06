@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp2.2</TargetFramework>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="8.1.1" />
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.1" />
+		<PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
+		<PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.12" />
+		<PackageReference Include="System.Text.Encoding.CodePages" Version="4.7.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
+		<PackageReference Include="FluentValidation" Version="8.3.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\LecturerManagement.Core.CQRS\LecturerManagement.Core.CQRS.csproj" />
+	  <ProjectReference Include="..\LecturerManagement.DomainModel\LecturerManagement.DomainModel.csproj" />
+	  <ProjectReference Include="..\LecturerManagement.Domain\LecturerManagement.Domain.csproj" />
+	  <ProjectReference Include="..\LecturerManagement.Infrastructure\LecturerManagement.Infrastructure.csproj" />
+	  <ProjectReference Include="..\LecturerManagement.Utility\LecturerManagement.Utility\LecturerManagement.Utility.csproj" />
+	</ItemGroup>
+</Project>
