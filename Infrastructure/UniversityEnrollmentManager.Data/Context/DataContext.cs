@@ -24,14 +24,14 @@ namespace UniversityEnrollmentManager.Data.Context
         public DataContext(DbContextOptions contextOptions) : base(contextOptions)
         { }
 
-        protected override void OnModelCreating(ModelBuilder _modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             GetType().Assembly.GetTypes()
                                 .Where(t => !t.GetTypeInfo().IsAbstract && t.GetInterfaces().Contains(typeof(IEntityConfiguration)))
                                 .ToList()
                                 .ForEach(t =>
                                 {
-                                    ((IEntityConfiguration)Activator.CreateInstance(t, new[] { _modelBuilder })).Configure(httpContextAccessor);
+                                    ((IEntityConfiguration)Activator.CreateInstance(t, new[] { modelBuilder })).Configure(httpContextAccessor);
                                 });
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

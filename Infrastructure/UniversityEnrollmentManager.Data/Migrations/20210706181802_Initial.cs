@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace UniversityEnrollmentManager.Data.Migrations._2021_07
+namespace UniversityEnrollmentManager.Data.Migrations
 {
-    public partial class _2021070701340000_InitialDbCreation : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

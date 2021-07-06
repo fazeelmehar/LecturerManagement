@@ -34,10 +34,7 @@ namespace UniversityEnrollmentManager.Api.Web.Extensions
             services.Configure<ConnectionStrings>(configuration.GetSection("ConnectionStrings"));
             services.AddEntityFramework(configuration);
         }
-    }
 
-    public static class StartupExtensions
-    {
         public static IApplicationBuilder UseSwaggerDocs(this IApplicationBuilder builder)
         {
 
@@ -60,9 +57,10 @@ namespace UniversityEnrollmentManager.Api.Web.Extensions
                      c.RoutePrefix = routePrefix;
                      c.DocExpansion(DocExpansion.None);
                      c.DefaultModelExpandDepth(2);
-                     c.DefaultModelRendering(ModelRendering.Model);
-                     c.DefaultModelsExpandDepth(-1);
+                     c.DefaultModelRendering(ModelRendering.Example);
+                     c.DefaultModelsExpandDepth(0);
                      c.DisplayOperationId();
+
                      c.DisplayRequestDuration();
                      c.EnableDeepLinking();
                      c.EnableFilter();
@@ -70,7 +68,10 @@ namespace UniversityEnrollmentManager.Api.Web.Extensions
                      c.EnableValidator();
                  });
         }
+    }
 
+    public static class StartupExtensions
+    {
         public static void RegisterApplication(this IServiceCollection services)
         {
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();

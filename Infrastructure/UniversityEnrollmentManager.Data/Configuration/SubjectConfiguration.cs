@@ -16,7 +16,7 @@ namespace UniversityEnrollmentManager.Data.Configuration
             builder.Property(p => p.Name)
                 .HasColumnType("varchar(80)");
 
-            builder.ToTable("tblSubject");
+            builder.ToTable("Subject");
         }
     }
 }

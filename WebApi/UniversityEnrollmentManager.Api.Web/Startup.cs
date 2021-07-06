@@ -1,20 +1,15 @@
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using System;
+using Swashbuckle.AspNetCore.Swagger;
 using UniversityEnrollmentManager.Api.Web.Extensions;
 using UniversityEnrollmentManager.Core.Enrollments;
-using UniversityEnrollmentManager.Data.Context;
-using UniversityEnrollmentManager.Data.Settings;
-using UniversityEnrollmentManager.Infrastructure.UnitOfWork;
-using UniversityEnrollmentManager.Utils.Interfaces;
+using UniversityEnrollmentManager.Mapping.Extensions;
 
 namespace UniversityEnrollmentManager.Api.Web
 {
@@ -43,6 +38,7 @@ namespace UniversityEnrollmentManager.Api.Web
                     });
                 c.EnableAnnotations();
             });
+
             services.RegisterHandlers();
 
             AppStartup.RegisterEF(services, Configuration);
@@ -61,7 +57,7 @@ namespace UniversityEnrollmentManager.Api.Web
             //});
 
             services.AddMediatR();
-            services.AddAutoMapper(typeof(Index));
+            services.AddDomainAutoMapper();
 
             services.Configure<ApiBehaviorOptions>(o =>
               o.InvalidModelStateResponseFactory = a => new UnprocessableEntityObjectResult(new Utils.ErrorModel(a.ModelState))
@@ -77,19 +73,10 @@ namespace UniversityEnrollmentManager.Api.Web
             app.UseCors("AllowAll");
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            app.UseSwagger();
+            app.UseSwagger(a => { a.SerializeAsV2 = true; });
             app.UseSwaggerDocs();
-            //app.UseMvc();
-            app.UseRouting();
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
-            //});
 
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-            });
+            app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {

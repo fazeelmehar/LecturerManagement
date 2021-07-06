@@ -22,7 +22,7 @@ namespace UniversityEnrollmentManager.Data.Providers
                 services.AddDbContext<DataContext>(options =>
                     options.UseSqlServer(connectionString, x =>
                     {
-                        //x.MigrationsAssembly("UniversityEnrollmentManager.Data");
+                        x.MigrationsAssembly("UniversityEnrollmentManager.Data");
                         x.CommandTimeout(1200);
                     }));
             }

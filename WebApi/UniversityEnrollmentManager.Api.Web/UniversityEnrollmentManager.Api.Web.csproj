@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\UniversityEnrollmentManager.Core.Enrollments\UniversityEnrollmentManager.Core.Enrollments.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\UniversityEnrollmentManager.Mapping\UniversityEnrollmentManager.Mapping.csproj" />
   </ItemGroup>
 
 </Project>
