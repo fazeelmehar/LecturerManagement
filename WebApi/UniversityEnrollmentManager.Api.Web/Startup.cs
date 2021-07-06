@@ -30,8 +30,6 @@ namespace UniversityEnrollmentManager.Api.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //MvcOptions.EnableEndpointRouting = false;
-
             services.AddOptions();
             services.AddSingleton(Configuration);
             services.AddSwaggerGen(c =>
@@ -51,16 +49,16 @@ namespace UniversityEnrollmentManager.Api.Web
             services.RegisterApplication();
             services.AddEntityServices();
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAll", builder => builder
-                   .AllowAnyHeader()
-                   .AllowAnyMethod()
-                   .AllowAnyOrigin()
-                   .AllowCredentials()
-                   .SetPreflightMaxAge(TimeSpan.FromMinutes(5))
-               );
-            });
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("AllowAll", builder => builder
+            //       .AllowAnyHeader()
+            //       .AllowAnyMethod()
+            //       .AllowAnyOrigin()
+            //       .AllowCredentials()
+            //       .SetPreflightMaxAge(TimeSpan.FromMinutes(5))
+            //   );
+            //});
 
             services.AddMediatR();
             services.AddAutoMapper(typeof(Index));
@@ -81,7 +79,22 @@ namespace UniversityEnrollmentManager.Api.Web
             app.UseStaticFiles();
             app.UseSwagger();
             app.UseSwaggerDocs();
-            app.UseMvc();
+            //app.UseMvc();
+            app.UseRouting();
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+            //});
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
 
             if (env.IsDevelopment())
             {
