@@ -40,18 +40,7 @@ namespace LecturerManagement.Api.Web
                              {
                                  Title = "Lecturer Management - V1",
                                  Version = "v1",
-                                 Description = "Lecturer Management Documentation",
-                                 //TermsOfService = "....",
-                                 //Contact = new Contact
-                                 //{
-                                 //    Name = "",
-                                 //    Email = ""
-                                 //},
-                                 //License = new License
-                                 //{
-                                 //    Name = "",
-                                 //    Url = ""
-                                 //}
+                                 Description = "Lecturer Management Documentation"
                              });
                 c.EnableAnnotations();
             });
