@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Intellix.Core.CQRS.Handlers;
+using LecturerManagement.Core.CQRS.Handlers;
 using LecturerManagement.Domain.Interfaces;
 using LecturerManagement.Utility;
 using MediatR;

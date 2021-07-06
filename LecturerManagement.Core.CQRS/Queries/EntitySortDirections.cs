@@ -1,4 +1,4 @@
-﻿namespace Intellix.Core.CQRS.Queries
+﻿namespace LecturerManagement.Core.CQRS.Queries
 {
     public static class EntitySortDirections
     {

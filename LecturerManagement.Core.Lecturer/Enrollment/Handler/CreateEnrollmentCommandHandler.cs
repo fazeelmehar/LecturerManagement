@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Intellix.Core.CQRS.Queries;
+using LecturerManagement.Core.CQRS.Queries;
 using LecturerManagement.Core.CQRS.Core.Handlers;
 using LecturerManagement.Core.CQRS.Model;
 using LecturerManagement.Core.Lecturer.Enrollment.Validation;

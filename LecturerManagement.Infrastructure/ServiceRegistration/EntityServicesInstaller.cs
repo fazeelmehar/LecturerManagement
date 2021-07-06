@@ -2,7 +2,7 @@
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Intellix.Infrastructure.Services
+namespace LecturerManagement.Infrastructure.Services
 {
     public static class EntityServicesInstaller
     {

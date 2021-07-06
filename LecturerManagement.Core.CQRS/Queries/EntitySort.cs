@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Intellix.Core.CQRS.Queries
+namespace LecturerManagement.Core.CQRS.Queries
 {
     public class EntitySort
     {

@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Intellix.Core.CQRS.Handlers
+namespace LecturerManagement.Core.CQRS.Handlers
 {
     public abstract class RequestHandlerBase<TRequest, TResponse> : IRequestHandler<TRequest, TResponse>
          where TRequest : IRequest<TResponse>

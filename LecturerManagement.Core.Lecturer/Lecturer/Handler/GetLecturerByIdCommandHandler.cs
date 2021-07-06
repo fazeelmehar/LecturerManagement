@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using Intellix.Core.CQRS.Queries;
+using LecturerManagement.Core.CQRS.Queries;
 using LecturerManagement.Core.CQRS.Core.Handlers;
 using LecturerManagement.Domain.Interfaces;
 using LecturerManagement.DomainModel.Lecture;

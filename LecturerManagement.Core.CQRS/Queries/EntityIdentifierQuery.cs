@@ -1,6 +1,6 @@
 ﻿using System.Security.Principal;
 
-namespace Intellix.Core.CQRS.Queries
+namespace LecturerManagement.Core.CQRS.Queries
 {
     public class EntityIdentifierQuery<TKey, TReadModel> : PrincipalQueryBase<TReadModel>
     {

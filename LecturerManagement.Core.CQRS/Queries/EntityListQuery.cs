@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Security.Principal;
-namespace Intellix.Core.CQRS.Queries
+namespace LecturerManagement.Core.CQRS.Queries
 
 {
     public class EntityListQuery<TReadModel> : PrincipalQueryBase<TReadModel>

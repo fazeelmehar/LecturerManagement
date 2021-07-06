@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Intellix.Core.CQRS.Queries
+namespace LecturerManagement.Core.CQRS.Queries
 {
     public class LinqExpressionBuilder
     {
@@ -108,7 +108,7 @@ namespace Intellix.Core.CQRS.Queries
         }
         private PropertyInfo GetPropertyInfo(string entityName, string propertyName)
         {
-            string entityDomain = "Intellix.Domain";
+            string entityDomain = "LecturerManagement.Domain";
             return Type.GetType($"{entityName},{entityDomain}").GetProperties()
                         .FirstOrDefault(x => x.Name.Equals(propertyName,StringComparison.CurrentCultureIgnoreCase));
         }

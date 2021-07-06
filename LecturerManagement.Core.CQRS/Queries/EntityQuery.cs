@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Intellix.Core.CQRS.Queries
+namespace LecturerManagement.Core.CQRS.Queries
 {
     public class EntityQuery
     {

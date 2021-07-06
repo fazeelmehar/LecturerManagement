@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using Intellix.Core.CQRS.Queries;
+using LecturerManagement.Core.CQRS.Queries;
 using LecturerManagement.Core.CQRS.Model;
 using LecturerManagement.Core.Lecturer.LectureTheatre.Handler;
 using LecturerManagement.Core.Lecturer.Student.Handler;

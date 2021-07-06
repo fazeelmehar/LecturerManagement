@@ -1,5 +1,5 @@
 ﻿using System.Security.Principal;
-namespace Intellix.Core.CQRS.Queries
+namespace LecturerManagement.Core.CQRS.Queries
 {
     public class EntityPagedModelQuery<TFilterModel,TReadModel> : PrincipalQueryBase<EntityPagedResult<TReadModel>>
     {

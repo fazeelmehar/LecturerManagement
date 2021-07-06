@@ -2,7 +2,7 @@
 using MediatR;
 using System.Security.Principal;
 
-namespace Intellix.Core.CQRS.Queries
+namespace LecturerManagement.Core.CQRS.Queries
 {
     public abstract class PrincipalQueryBase<TResponse> : IRequest<TResponse>
     {

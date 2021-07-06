@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Builder;
-using Intellix.Infrastructure.Services;
+using LecturerManagement.Infrastructure.Services;
 using LecturerManagement.Core.Lecturer;
 using LecturerManagement.Domain.Mapping;
 using LecturerManagement.Utility;

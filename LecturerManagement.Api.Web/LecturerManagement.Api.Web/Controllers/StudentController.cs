@@ -45,7 +45,7 @@ namespace LecturerManagement.Api.Web.Controllers
             var returnResponse = new EntityResponseModel<StudentReadModel>();
             try
             {
-                var query = new Intellix.Core.CQRS.Queries.EntityIdentifierQuery<int, EntityResponseModel<StudentReadModel>>(User, Id);
+                var query = new LecturerManagement.Core.CQRS.Queries.EntityIdentifierQuery<int, EntityResponseModel<StudentReadModel>>(User, Id);
                 var result = await Mediator.Send(query, cancellationToken).ConfigureAwait(false);
                 if (result.ReturnStatus == false)
                     return BadRequest(result);
