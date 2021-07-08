@@ -120,10 +120,10 @@ namespace UniversityEnrollmentManager.Data.Migrations
 
             modelBuilder.Entity("UniversityEnrollmentManager.Domain.Entities.Enrollment", b =>
                 {
-                    b.HasOne("UniversityEnrollmentManager.Domain.Entities.Lecture", "Lecture")
+                    b.HasOne("UniversityEnrollmentManager.Domain.Entities.Subject", "Subject")
                         .WithMany("Enrollments")
-                        .HasForeignKey("LectureId")
-                        .HasConstraintName("FK_Enrollments_Lecture_LectureId");
+                        .HasForeignKey("SubjectId")
+                        .HasConstraintName("FK_Enrollments_Subject_SubjectId");
 
                     b.HasOne("UniversityEnrollmentManager.Domain.Entities.Student", "Student")
                         .WithMany("Enrollments")

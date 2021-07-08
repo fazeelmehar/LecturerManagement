@@ -33,7 +33,7 @@ namespace UniversityEnrollmentManager.Core.Enrollments.Enrollment.Handlers
                 }
                 response.Data = Mapper.Map<EnrollmentReadModel>(await DataContext.Set<Domain.Entities.Enrollment>()
                                                                                  .Include(s => s.Student)
-                                                                                 .Include(s => s.Lecture)
+                                                                                 .Include(s => s.Subject)
                                                                                  .Where(s => s.Id == request.Id)
                                                                                  .FirstOrDefaultAsync());
             }

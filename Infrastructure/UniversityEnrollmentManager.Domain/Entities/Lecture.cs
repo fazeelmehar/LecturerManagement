@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace UniversityEnrollmentManager.Domain.Entities
 {
@@ -11,6 +12,5 @@ namespace UniversityEnrollmentManager.Domain.Entities
         public TimeSpan Duration { get; set; }
         public Subject Subject { get; set; }
         public LectureTheatre LectureTheatre { get; set; }
-        public ICollection<Enrollment> Enrollments { get; set; }
     }
 }

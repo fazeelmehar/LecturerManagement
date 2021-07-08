@@ -7,6 +7,7 @@ namespace UniversityEnrollmentManager.Mapping.MappingProfiles
     {
         public SubjectMapping()
         {
+            CreateMap<SubjectEnrollmentsReadModel, Domain.Entities.Subject>().ReverseMap();
             CreateMap<SubjectReadModel, Domain.Entities.Subject>().ReverseMap();
             CreateMap<SubjectCreateModel, Domain.Entities.Subject>();
         }

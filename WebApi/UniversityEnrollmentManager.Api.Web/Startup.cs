@@ -45,17 +45,6 @@ namespace UniversityEnrollmentManager.Api.Web
             services.RegisterApplication();
             services.AddEntityServices();
 
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy("AllowAll", builder => builder
-            //       .AllowAnyHeader()
-            //       .AllowAnyMethod()
-            //       .AllowAnyOrigin()
-            //       .AllowCredentials()
-            //       .SetPreflightMaxAge(TimeSpan.FromMinutes(5))
-            //   );
-            //});
-
             services.AddMediatR();
             services.AddDomainAutoMapper();
 
@@ -63,7 +52,7 @@ namespace UniversityEnrollmentManager.Api.Web
               o.InvalidModelStateResponseFactory = a => new UnprocessableEntityObjectResult(new Utils.ErrorModel(a.ModelState))
             );
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddMvc().AddNewtonsoftJson();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

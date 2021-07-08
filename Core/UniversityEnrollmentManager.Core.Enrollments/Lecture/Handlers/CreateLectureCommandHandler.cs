@@ -32,18 +32,22 @@ namespace UniversityEnrollmentManager.Core.Enrollments.Lecture.Handlers
                 if (!request.Model.LectureTheatreId.HasValue ||
                    !DataContext.Set<Domain.Entities.LectureTheatre>().Any(s => s.Id == request.Model.LectureTheatreId))
                 {
-                    response.ReturnMessage.Add("No lecture theatre found");
+                    response.ReturnMessage.Add("No lecture theatre exists for the lecture theatre Id supplied.");
                     response.ReturnStatus = false;
                     return response;
                 }
+
                 // Check subject exists
                 if (!request.Model.SubjectId.HasValue ||
                    !DataContext.Set<Domain.Entities.Subject>().Any(s => s.Id == request.Model.SubjectId))
                 {
-                    response.ReturnMessage.Add("No subject found");
+                    response.ReturnMessage.Add("No subject exists for the subject Id supplied.");
                     response.ReturnStatus = false;
                     return response;
                 }
+
+                // Check lecture theatre not already booked at the same time or overlapping durations
+               // To Do
 
                 DataContext.Set<Domain.Entities.Lecture>().Add(lecture);
                 DataContext.CommitTransaction();

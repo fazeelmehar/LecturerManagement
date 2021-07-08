@@ -27,6 +27,7 @@ namespace UniversityEnrollmentManager.Core.Enrollments
             #endregion
 
             #region Subject
+            serviceCollection.TryAddTransient<IRequestHandler<EntityIdentifierQuery<int, EntityResponseModel<SubjectEnrollmentsReadModel>>, EntityResponseModel<SubjectEnrollmentsReadModel>>, GetAllStudentsEnrolledInSubjectCommandHandler<IUnitOfWork>>();
             serviceCollection.TryAddTransient<IRequestHandler<EntityIdentifierQuery<int, EntityResponseModel<SubjectReadModel>>, EntityResponseModel<SubjectReadModel>>, GetSubjectByIdCommandHandler<IUnitOfWork>>();
             serviceCollection.TryAddTransient<IRequestHandler<EntityRequestModel<SubjectCreateModel, EntityResponseModel<SubjectReadModel>>, EntityResponseModel<SubjectReadModel>>, CreateSubjectCommandHandler<IUnitOfWork>>();
             #endregion

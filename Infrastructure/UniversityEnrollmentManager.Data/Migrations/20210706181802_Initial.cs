@@ -90,15 +90,15 @@ namespace UniversityEnrollmentManager.Data.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     IsDeleted = table.Column<bool>(nullable: false, defaultValue: false),
                     StudentId = table.Column<int>(nullable: true),
-                    LectureId = table.Column<int>(nullable: true)
+                    SubjectId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Enrollment", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Enrollments_Lecture_LectureId",
-                        column: x => x.LectureId,
-                        principalTable: "Lecture",
+                        name: "FK_Enrollment_Subject_SubjectId",
+                        column: x => x.SubjectId,
+                        principalTable: "Subject",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -110,9 +110,9 @@ namespace UniversityEnrollmentManager.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Enrollment_LectureId",
+                name: "IX_Enrollment_SubjectId",
                 table: "Enrollment",
-                column: "LectureId");
+                column: "SubjectId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Enrollment_StudentId",

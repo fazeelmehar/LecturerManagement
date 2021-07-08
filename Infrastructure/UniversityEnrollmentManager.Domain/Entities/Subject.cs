@@ -6,5 +6,6 @@ namespace UniversityEnrollmentManager.Domain.Entities
     {
         public string Name { get; set; }
         public ICollection<Lecture> Lectures { get; set; }
+        public ICollection<Enrollment> Enrollments { get; set; }
     }
 }

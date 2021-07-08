@@ -7,6 +7,6 @@ namespace UniversityEnrollmentManager.DomainModel.Enrollment
     public class EnrollmentCreateModel
     {
         public int StudentId { get; set; }
-        public int LectureId { get; set; }
+        public int SubjectId { get; set; }
     }
 }

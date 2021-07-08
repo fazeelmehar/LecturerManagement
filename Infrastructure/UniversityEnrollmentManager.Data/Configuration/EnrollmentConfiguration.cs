@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Text;
 using UniversityEnrollmentManager.Domain.Entities;
 
 namespace UniversityEnrollmentManager.Data.Configuration
@@ -14,17 +17,18 @@ namespace UniversityEnrollmentManager.Data.Configuration
         {
             base.Configure(httpContextAccessor);
 
+
             builder.ToTable("Enrollment");
+
+            builder.HasOne(x => x.Subject)
+                .WithMany(x => x.Enrollments)
+                .HasForeignKey(x => x.SubjectId)
+                .HasConstraintName("FK_Enrollments_Subject_SubjectId");
 
             builder.HasOne(x => x.Student)
                 .WithMany(x => x.Enrollments)
                 .HasForeignKey(x => x.StudentId)
                 .HasConstraintName("FK_Enrollments_Student_StudentId");
-
-            builder.HasOne(x => x.Lecture)
-                .WithMany(x => x.Enrollments)
-                .HasForeignKey(x => x.LectureId)
-                .HasConstraintName("FK_Enrollments_Lecture_LectureId");
         }
     }
 }
