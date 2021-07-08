@@ -26,13 +26,11 @@ namespace UniversityEnrollmentManager.Api.Web.Controllers
             {
                 var query = new EntityRequestModel<SubjectCreateModel, EntityResponseModel<SubjectReadModel>>(model);
                 var result = await Mediator.Send(query, cancellationToken).ConfigureAwait(false);
-                
-                if (result.ReturnStatus == false)
-                {
-                    return BadRequest(result);
-                }
 
+                if (!result.ReturnStatus)
+                    return BadRequest(result);
                 return Ok(result);
+
             }
             catch (Exception ex)
             {
@@ -51,11 +49,32 @@ namespace UniversityEnrollmentManager.Api.Web.Controllers
             {
                 var query = new EntityIdentifierQuery<int, EntityResponseModel<SubjectReadModel>>(User, Id);
                 var result = await Mediator.Send(query, cancellationToken).ConfigureAwait(false);
-                
-                if (result.ReturnStatus == false) { 
-                    return BadRequest(result);
-                }
 
+                if (!result.ReturnStatus)
+                    return BadRequest(result);
+                return Ok(result);
+
+            }
+            catch (Exception ex)
+            {
+                returnResponse.ReturnStatus = false;
+                returnResponse.ReturnMessage.Add(ex.Message);
+                return BadRequest(returnResponse);
+            }
+        }
+
+        [HttpPost("GetAllStudentsEnrolledInSubject")]
+        [ProducesResponseType(typeof(EntityResponseListModel<SubjectEnrollmentsReadModel>), 200)]
+        public async Task<IActionResult> GetAllStudentsEnrolledInSubject(CancellationToken cancellationToken, int Id)
+        {
+            var returnResponse = new EntityResponseListModel<SubjectEnrollmentsReadModel>();
+            try
+            {
+                var query = new EntityIdentifierQuery<int, EntityResponseListModel<SubjectEnrollmentsReadModel>>(User, Id);
+                var result = await Mediator.Send(query, cancellationToken).ConfigureAwait(false);
+
+                if (!result.ReturnStatus)
+                    return BadRequest(result);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -65,5 +84,6 @@ namespace UniversityEnrollmentManager.Api.Web.Controllers
                 return BadRequest(returnResponse);
             }
         }
+
     }
 }

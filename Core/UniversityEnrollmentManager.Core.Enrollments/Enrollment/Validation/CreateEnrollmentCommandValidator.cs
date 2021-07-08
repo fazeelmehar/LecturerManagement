@@ -19,6 +19,11 @@ namespace UniversityEnrollmentManager.Core.Enrollments.Enrollment.Validation
                 .NotEmpty()
                 .WithMessage("A SubjectId must be supplied to allow an Enrollment to occur.");
 
+            RuleFor(x => x.StudentId)
+                .NotNull()
+                .NotEmpty()
+                .WithMessage("A StudentId must be supplied to allow an Enrollment to occur.");
+
             RuleFor(x => x)
            .Cascade(CascadeMode.Stop)
            .Must(x => HaveASubjectToEnrolIn(unitOfWork, x.SubjectId))

@@ -66,5 +66,28 @@ namespace UniversityEnrollmentManager.Api.Web.Controllers
                 return BadRequest(returnResponse);
             }
         }
+
+        [HttpPost("GetAll")]
+        [ProducesResponseType(typeof(EntityResponseListModel<EnrollmentStudentsReadModel>), 200)]
+        public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
+        {
+            var returnResponse = new EntityResponseListModel<EnrollmentStudentsReadModel>();
+            try
+            {
+                var query = new EntityListQuery<EntityResponseListModel<EnrollmentStudentsReadModel>>();
+                var result = await Mediator.Send(query, cancellationToken).ConfigureAwait(false);
+
+                if (!result.ReturnStatus)
+                    return BadRequest(result);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                returnResponse.ReturnStatus = false;
+                returnResponse.ReturnMessage.Add(ex.Message);
+                return BadRequest(returnResponse);
+            }
+        }
+
     }
 }

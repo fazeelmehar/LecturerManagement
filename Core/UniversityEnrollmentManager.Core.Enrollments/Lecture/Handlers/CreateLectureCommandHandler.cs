@@ -2,9 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using UniversityEnrollmentManager.Core.Enrollments.Enrollment.Validation;
 using UniversityEnrollmentManager.Core.Enrollments.RequestHandlers;
 using UniversityEnrollmentManager.DomainModel.Lecture;
 using UniversityEnrollmentManager.Utils;
@@ -26,6 +28,22 @@ namespace UniversityEnrollmentManager.Core.Enrollments.Lecture.Handlers
             var response = new EntityResponseModel<LectureReadModel>();
             try
             {
+                var validate = new CreateLectureCommandValidator(DataContext);
+                var validateResult = validate.Validate(request.Model);
+                if (!validateResult.IsValid)
+                {
+                    var errors = new Hashtable();
+                    foreach (var validateResultError in validateResult.Errors)
+                    {
+                        errors.Add("Error", validateResultError.ErrorMessage);
+                    }
+                    return new EntityResponseModel<LectureReadModel>
+                    {
+                        ReturnStatus = false,
+                        Errors = errors
+                    };
+                }
+
                 var lecture = Mapper.Map<Domain.Entities.Lecture>(request.Model);
 
                 // Check lecture theatre exists

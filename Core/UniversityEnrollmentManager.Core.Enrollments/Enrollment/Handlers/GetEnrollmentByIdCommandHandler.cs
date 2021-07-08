@@ -39,7 +39,7 @@ namespace UniversityEnrollmentManager.Core.Enrollments.Enrollment.Handlers
             }
             catch (Exception ex)
             {
-                response.ReturnMessage.Add($"Unable to Update Record {typeof(Domain.Entities.Lecture).Name} {ex.Message}");
+                response.ReturnMessage.Add($"Unable to Get Record {typeof(Domain.Entities.Enrollment).Name} {ex.Message}");
                 response.ReturnStatus = false;
                 DataContext.RollbackTransaction();
             }

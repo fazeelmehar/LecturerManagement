@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using System;
 using UniversityEnrollmentManager.Core.Enrollments.Enrollment.Handlers;
 using UniversityEnrollmentManager.Core.Enrollments.Lecture.Handlers;
 using UniversityEnrollmentManager.Core.Enrollments.LectureTheater.Handlers;
@@ -27,7 +28,7 @@ namespace UniversityEnrollmentManager.Core.Enrollments
             #endregion
 
             #region Subject
-            serviceCollection.TryAddTransient<IRequestHandler<EntityIdentifierQuery<int, EntityResponseModel<SubjectEnrollmentsReadModel>>, EntityResponseModel<SubjectEnrollmentsReadModel>>, GetAllStudentsEnrolledInSubjectCommandHandler<IUnitOfWork>>();
+            serviceCollection.TryAddTransient<IRequestHandler<EntityIdentifierQuery<int, EntityResponseListModel<SubjectEnrollmentsReadModel>>, EntityResponseListModel<SubjectEnrollmentsReadModel>>, GetAllStudentsEnrolledInSubjectCommandHandler<IUnitOfWork>>();
             serviceCollection.TryAddTransient<IRequestHandler<EntityIdentifierQuery<int, EntityResponseModel<SubjectReadModel>>, EntityResponseModel<SubjectReadModel>>, GetSubjectByIdCommandHandler<IUnitOfWork>>();
             serviceCollection.TryAddTransient<IRequestHandler<EntityRequestModel<SubjectCreateModel, EntityResponseModel<SubjectReadModel>>, EntityResponseModel<SubjectReadModel>>, CreateSubjectCommandHandler<IUnitOfWork>>();
             #endregion
@@ -45,6 +46,7 @@ namespace UniversityEnrollmentManager.Core.Enrollments
             #region Enrollment
             serviceCollection.TryAddTransient<IRequestHandler<EntityIdentifierQuery<int, EntityResponseModel<EnrollmentReadModel>>, EntityResponseModel<EnrollmentReadModel>>, GetEnrollmentByIdCommandHandler<IUnitOfWork>>();
             serviceCollection.TryAddTransient<IRequestHandler<EntityRequestModel<EnrollmentCreateModel, EntityResponseModel<EnrollmentReadModel>>, EntityResponseModel<EnrollmentReadModel>>, CreateEnrollmentCommandHandler<IUnitOfWork>>();
+            serviceCollection.TryAddTransient<IRequestHandler<EntityListQuery<EntityResponseListModel<EnrollmentStudentsReadModel>>, EntityResponseListModel<EnrollmentStudentsReadModel>>, GetAllEnrollmentCommandHandler<IUnitOfWork>>();
             #endregion
 
             return serviceCollection;

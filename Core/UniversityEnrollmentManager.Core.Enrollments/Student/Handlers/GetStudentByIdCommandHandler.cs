@@ -34,7 +34,12 @@ namespace UniversityEnrollmentManager.Core.Enrollments.Student.Handlers
                     response.ReturnStatus = false;
                     return response;
                 }
-                response.Data = Mapper.Map<StudentReadModel>(await DataContext.Set<Domain.Entities.Student>().Where(s => s.Id == request.Id).FirstOrDefaultAsync());
+                response.Data = Mapper.Map<StudentReadModel>(
+                    await DataContext.Set<Domain.Entities.Student>()
+                                     .Include(s => s.Enrollments)
+                                     .Include(s => s.Enrollments).ThenInclude(s => s.Subject)
+                                     .Where(s => s.Id == request.Id)
+                                     .FirstOrDefaultAsync());
             }
             catch (Exception ex)
             {

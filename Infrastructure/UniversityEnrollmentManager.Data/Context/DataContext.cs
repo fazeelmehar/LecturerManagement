@@ -21,9 +21,6 @@ namespace UniversityEnrollmentManager.Data.Context
             this.httpContextAccessor = httpContextAccessor;
         }
 
-        public DataContext(DbContextOptions contextOptions) : base(contextOptions)
-        { }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             GetType().Assembly.GetTypes()
