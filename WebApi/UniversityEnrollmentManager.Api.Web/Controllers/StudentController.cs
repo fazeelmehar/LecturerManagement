@@ -43,7 +43,7 @@ namespace UniversityEnrollmentManager.Api.Web.Controllers
             }
         }
 
-        [HttpPost("GetById")]
+        [HttpGet("GetById")]
         [ProducesResponseType(typeof(EntityResponseModel<StudentReadModel>), 200)]
         public async Task<IActionResult> GetById(CancellationToken cancellationToken, int Id)
         {
